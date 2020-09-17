@@ -1,1 +1,51 @@
 # delilah_resto
+
+Para utilizar la API se debe tener instalado Visual Code (VC). 
+Una vez en visual code, se debe tener iniciada la consola, lo cual se puede realizar de dos maneras: 
+	- En View -> Terminal 
+	- Con el comando Control+Ñ
+Dentro de VC, para poder ejecutar todos los endpoints se debe:
+1) Ejecutar npm init
+2) Ejecutar npm i express
+3) Ejecutar npm i body-parser
+4) Ejecutar npm i jsonwebtoken
+5) Ejecutar npm i sequelize
+6) Ejecutar npm i mysql2
+
+Estructura Base de Datos
+El proyecto se basa en tablas relacionales, por lo cual se requiere de una herramienta visual de diseño de bases de datos, tal como WorkBench, por ejemplo. 
+En la herramienta, se deben crear las tablas necesarias para que el proyecto funcione. Para ellos: 
+	1) Se debe crear un esquema, cuyo nombre identificará a la base de datos (database)
+	2) Se deberán crear dentro de ese esquema todas las tablas especificadas en el archivo "GeneracionTablasSQL.xlsx": 
+		a) Dentro de editor copiar cada una de las querys de creación de tablas y ejecutarlas. 
+		b) Se deben ir creando dentro del esquema, cada una de las tablas. 
+		c) El esquema debe quedar compuesto de 8 tablas: 
+			- estadospedidos
+			- metodospago
+			- pedidos
+			- productos
+			- productosfavoritos
+			- productospedidos
+			- tiposusuario
+			- usuarios
+
+Para poder acceder a la base de datos, desde el código, los datos a completar dentro del archivo 'conexionBD.js' son:
+	- let database = "NOMBRE DE LA BASE DE DATOS";
+	- let username = "USUARIO DE ACCESO A LA BASE DE DATOS";
+	- let passwordDB = "CONTRASEÑA DE ACCESO A LA BASE DE DATOS";
+
+Cómo levantar Servidor
+Para levantar el servidor, basta con escribir en la consola "node server.js". Debe aparecer lo siguiente: 
+	Servidor en puerto 5500, iniciado
+	Executing (default): SELECT 1+1 AS result
+	La conexión fue exitosa
+La primera línea indica que el servidor se inicio y las dos segundas indican la conexión exitosa a la base de datos.
+
+Para probar de Postman
+Una vez iniciado el servidor, para probar las rutas en postman se debe:
+1) Crear una nueva colección
+2) Indicar el tipo de pedido que se realizará (POST, PUT, GET, DELETE)
+3) En la ruta se debe escribir: 'localhost:5500/GRUPOPEDIDO/x/x, siendo GRUPOPEDIDO el tipo de pedido al que se quiere acceder (usuarios, productos o pedidos) y x/x representan lo que se debe adicionar (según documentación), en función del pedido que se realizará.
+
+Documentación complementaria de la API (endpoints) en Swagger: https://app.swaggerhub.com/apis/leilagattas/Delilah_Resto/1.0.0
+
